@@ -138,8 +138,8 @@ def main():
     parser.add_argument(
         '-o', '--output',
         type=str,
-        default='interactive_3d_frequency.html',
-        help='Output HTML filename (default: interactive_3d_frequency.html)',
+        default='outputs/interactive_3d_frequency.html',
+        help='Output HTML filename (default: outputs/interactive_3d_frequency.html)',
     )
     parser.add_argument(
         '--true-hopf',
@@ -187,6 +187,7 @@ def main():
         height=args.height,
     )
 
+    Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     fig.write_html(args.output)
     print(f"Saved {args.output}")
 

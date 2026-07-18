@@ -43,6 +43,9 @@ DEFAULTS = {
 
 def run_1d_sweep(args):
     """Run the 1-D Md sweep at constant Vt."""
+    outdir = Path(args.outdir) / 'sweep_Md'
+    outdir.mkdir(parents=True, exist_ok=True)
+
     print("\n=== 1-D Md sweep ===")
     print(f"Using n_jobs={args.n_jobs}")
     t0 = time.time()
@@ -54,8 +57,8 @@ def run_1d_sweep(args):
         n_jobs=args.n_jobs,
     )
     print(f"Found {len(records)} records in {time.time()-t0:.1f}s")
-    csv_path, npz_path = sweep.save_results(records, args.vt_sweep, args.outdir)
-    fig_path = sweep.plot_results(records, args.vt_sweep, args.outdir)
+    csv_path, npz_path = sweep.save_results(records, args.vt_sweep, outdir)
+    fig_path = sweep.plot_results(records, args.vt_sweep, outdir)
     print(f"  CSV:  {csv_path}")
     print(f"  NPZ:  {npz_path}")
     print(f"  Plot: {fig_path}")
@@ -97,8 +100,8 @@ def run_2d_grid(segment, args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--outdir', type=str, default='.',
-                        help='Base output directory (default: current directory)')
+    parser.add_argument('--outdir', type=str, default='outputs',
+                        help='Base output directory (default: outputs)')
     parser.add_argument('--n-jobs', type=int, default=1,
                         help='Number of parallel workers for 2-D grids (default: 1; use -1 for all cores)')
 

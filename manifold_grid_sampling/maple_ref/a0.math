@@ -1,0 +1,1 @@
+a0 := -Vr^2*gammaa^2+2*Vr*Vt*gammaa^2-Vt^2*gammaa^2+2*Vr*b*gammaa-2*Vt*b*gammaa-4*Eu*gammaa+4*Iext*gammaa

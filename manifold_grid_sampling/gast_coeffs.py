@@ -238,7 +238,7 @@ _b4 = (
 # -----------------------------------------------------------------------------
 # Hopf manifold resultant in terms of the a- and b-coefficients
 # This is the discriminant-like expression obtained by eliminating the
-# equilibrium variable r.  See hopf_manifold.md for the LaTeX form.
+# equilibrium variable r.  See hopf_manifold.math for the maple form.
 # -----------------------------------------------------------------------------
 _hopf_manifold = (
     _a0**4 * _b4**2

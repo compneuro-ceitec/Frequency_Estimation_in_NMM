@@ -291,13 +291,14 @@ def save_results(records, vt, outdir='.'):
     return csv_path, npz_path
 
 
-def plot_results(records, vt, outdir='.'):
+def plot_results(records, vt, outdir='outputs'):
     """Create a multi-panel figure of the sweep results."""
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
 
     outdir = Path(outdir)
+    outdir.mkdir(parents=True, exist_ok=True)
     fig_path = outdir / f"sweep_Md_Vt{vt:.2f}.png"
 
     if not records:
@@ -369,8 +370,8 @@ def main():
                         help='Lower bound for Iext. Default: 0.0')
     parser.add_argument('--iext-max', type=float, default=300.0,
                         help='Upper bound for Iext. Default: 300.0')
-    parser.add_argument('--outdir', type=str, default='.',
-                        help='Output directory. Default: current directory')
+    parser.add_argument('--outdir', type=str, default='outputs',
+                        help='Output directory. Default: outputs')
     args = parser.parse_args()
 
     print(f"Running Md sweep: Md in [{args.md_min}, {args.md_max}], Vt = {args.vt}")

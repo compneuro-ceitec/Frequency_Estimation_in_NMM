@@ -301,7 +301,7 @@ def main():
     parser.add_argument('--n-vt', type=int, default=101)
     parser.add_argument('--iext-min', type=float, default=0.0)
     parser.add_argument('--iext-max', type=float, default=300.0)
-    parser.add_argument('--outdir', type=str, default='.')
+    parser.add_argument('--outdir', type=str, default='outputs')
     args = parser.parse_args()
 
     print(f"Running 2-D grid: Md in [{args.md_min}, {args.md_max}] x {args.n_md}, "

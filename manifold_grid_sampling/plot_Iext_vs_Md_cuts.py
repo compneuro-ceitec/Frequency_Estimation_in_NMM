@@ -83,6 +83,7 @@ def plot_cuts(path, vt_cuts=None, true_hopf=False, hopf_tol=1e-3,
         ax.set_visible(False)
 
     fig.tight_layout()
+    Path(output).parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output, dpi=150)
     print(f"Saved {output}")
 
@@ -90,8 +91,8 @@ def plot_cuts(path, vt_cuts=None, true_hopf=False, hopf_tol=1e-3,
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('input', help='Grid result .npz file')
-    parser.add_argument('-o', '--output', type=str, default='Iext_vs_Md_cuts.png',
-                        help='Output PNG filename')
+    parser.add_argument('-o', '--output', type=str, default='outputs/Iext_vs_Md_cuts.png',
+                        help='Output PNG filename (default: outputs/Iext_vs_Md_cuts.png)')
     parser.add_argument('--vt-cuts', type=float, nargs='+', default=None,
                         help='List of fixed Vt values (default: 12 evenly spaced)')
     parser.add_argument('--true-hopf', action='store_true',
